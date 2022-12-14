@@ -1,52 +1,51 @@
-let currentPrice=0, itemCount=0
+const cart = {
+currentPrice:0,
+items: [],
+addItem: function (cookie,price) {
+    //add a cookie(string to the items array
+    
+    this.items.push(cookie)
 
-function addToCart(cookie) {
-    /* 
-        PRICES
-        peanut butter: 20
-        sandies: 30
-        party press: 35
-        chocolate chip: 25
-    */
+    //add the price(number) to the currentPrice properties
+
+    this.currentPrice=this.currentPrice+price
+},
    
-   console.log('The user is adding this type of cookie to their cart: ' , cookie) 
+clear:function() {
+//reset the currentPrice and items properties
+   this.currentPrice=0
+   this.items=[]
+},
+}
+function addToCart(cookie) {
+    /*prices
+    peanut-butter:20
+    sandies:30
+    party press:35
+    chocolate chip:25
+    */
 
-   //add 1 to the itemCount variable
-
-   itemCount=itemCount+1
-   console.log(itemCount)
-
-   document.getElementById("cartItems").innerHTML=count
-
-   //add the correct price to the currentPrice variable
+    console.log('The user is adding this type of cookie to their cart: ', cookie)
 
    if (cookie == "peanut butter"){
-        currentPrice == currentPrice + 20
-   } else if (cookie == "sandles"){
-    currentPrice == currentPrice + 30
-   } else if (cookie == "party press"){
-currentPrice = currentPrice + 35
-   } else if (cookie == "chocolate chip"){
-    currentPrice = currentPrice = 25
-   }
+   if (cookie == 'sandles'){cart.addItem(cookie,30)}
+   if (cookie == 'party press') { cart.addItem(cookie,35)}
+   if (cookie == 'chocolate chip') {cart.addItem(cookie,25)}
    
-   document.querySelector(".hoverText").innerHTML = currentPrice
-   
-   console.log(currentPrice)
-   }
+   document.querySelector(".hoverText").innerHTML = cart.currentPrice
+   console.log(cart)
+   document.getElementById("cartItems").innerHTML=cart.items.length
+}
 
 
-function checkout() {
+functioncheckout() {
     console.log('User is checking out.')
     //Let your customer know how many items they are purchasing and the price
     window.alert(`You have a total of ${itemCount} items that will cost ${currentPrice}. Thank you for shopping with us `)
-
-
-    currentPrice=0
-    itemCount=0
-
-    document.getElementById("cartItems").innerHTML=itemCountdocument
-    document.querySelector(".hoverText").innerHTML=currentPrice
+cart.clear()
+document.getElementById("cartItems").innerHTML=itemCountdocument
+console.log(cart)
+document.querySelector(".hoverText").innerHTML=cart.currentPrice
 }
 function darkMode() {
     // add your code
